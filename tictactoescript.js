@@ -65,8 +65,17 @@ cells.forEach((cell, index) => {
 			
 		}
 		
-		changeTurn(turn);
+		if( turn > 8 ){
+			
+			showDraw();
+			game_over = true;
+			
+		}
+		else{
 		
+			changeTurn(turn);
+		
+		}
 	});
 	
 });
@@ -122,5 +131,11 @@ function resetGame(){
         img.src = "blank.jpg";
 		
     });
+	
+}
+
+function showDraw(){
+	
+	turn_header.textContent = "!!! DRAW !!!"; 
 	
 }
