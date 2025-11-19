@@ -3,10 +3,9 @@ const cells = document.querySelectorAll("#grid td");
 const turn_header = document.getElementById("turn");
 const turn_span = document.getElementById("turn_span");
 
-let turn = 0;
-// turn is even => x's turn
-// turn is odd 	=> o's turn
-
+let turn = 0; // % 2 == 0 => X's turn, % 2 == 1 => O's turn
+let result = ""
+let gameOver = false;
 let board = ["", "", "", "", "", "", "", "", ""];
 
 const winning_combos = [
@@ -20,10 +19,13 @@ const winning_combos = [
     [2, 4, 6]  // diagonal top-right → bottom-left
 ];
 
-
 cells.forEach((cell, index) => {
 	
 	cell.addEventListener("click", () => {
+		
+		if( gameOver == true ){
+			return;
+		}
 		
 		console.log("Clicked cell nr: ", index);
 		
@@ -45,17 +47,19 @@ cells.forEach((cell, index) => {
 			
 		}
 		
-		let result = checkWinner();
+		result = checkWinner();
 		
 		if( result === "x" ){
 			
 			turn_header.textContent = "X wins !!!"; 
+			gameOver = true;
 			
 		}
 		
 		else if( result === "o" ){
 			
 			turn_header.textContent = "O wins !!!"; 
+			gameOver = true;
 			
 		}
 		
