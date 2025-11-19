@@ -1,0 +1,27 @@
+.cell {
+	
+	cursor: pointer;
+	width: 150px;
+	height: 150px;
+	
+}
+
+#mid_mid {
+	
+	border: 2px dashed black;
+	
+}
+
+#top_mid, #bot_mid {
+	
+	border-left : 2px dashed black;
+	border-right : 2px dashed black;
+	
+}
+
+#mid_left, #mid_right {
+	
+	border-top : 2px dashed black;
+	border-bottom: 2px dashed black;
+	
+}
