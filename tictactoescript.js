@@ -3,9 +3,11 @@ const cells = document.querySelectorAll("#grid td");
 const turn_header = document.getElementById("turn");
 const turn_span = document.getElementById("turn_span");
 
+const reset_button = document.getElementById("reset_button");
+
 let turn = 0; // % 2 == 0 => X's turn, % 2 == 1 => O's turn
 let result = ""
-let gameOver = false;
+let game_over = false;
 let board = ["", "", "", "", "", "", "", "", ""];
 
 const winning_combos = [
@@ -23,7 +25,7 @@ cells.forEach((cell, index) => {
 	
 	cell.addEventListener("click", () => {
 		
-		if( gameOver == true ){
+		if( game_over == true ){
 			return;
 		}
 		
@@ -51,15 +53,15 @@ cells.forEach((cell, index) => {
 		
 		if( result === "x" ){
 			
-			turn_header.textContent = "X wins !!!"; 
-			gameOver = true;
+			turn_header.textContent = "!!! X wins !!!"; 
+			game_over = true;
 			
 		}
 		
 		else if( result === "o" ){
 			
-			turn_header.textContent = "O wins !!!"; 
-			gameOver = true;
+			turn_header.textContent = "!!! O wins !!!"; 
+			game_over = true;
 			
 		}
 		
@@ -68,6 +70,8 @@ cells.forEach((cell, index) => {
 	});
 	
 });
+
+reset_button.addEventListener("click", resetGame);
 
 function changeTurn(turn){
 	
@@ -100,5 +104,23 @@ function checkWinner(){
 	}
 	
 	return null;
+	
+}
+
+function resetGame(){
+	
+	turn = 0;
+	result = "";
+	game_over = false;
+	board = ["", "", "", "", "", "", "", "", ""];
+	
+	turn_header.innerHTML = `It's <span id="turn_span">X</span>'s turn!`;
+	
+	cells.forEach(cell => {
+		
+        const img = cell.querySelector("img");
+        img.src = "blank.jpg";
+		
+    });
 	
 }
