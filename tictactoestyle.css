@@ -25,3 +25,15 @@
 	border-bottom: 2px dashed black;
 	
 }
+
+#grid {
+	
+    display: inline-block;
+	
+}
+
+#game {
+	
+	text-align: center;
+	
+}

@@ -1,4 +1,5 @@
-const cells = document.querySelectorAll("#grid td")
+const cells = document.querySelectorAll("#grid td");
+const turn_span = document.getElementById("turn_span");
 
 let turn = 0;
 // turn is even => x's turn
@@ -26,7 +27,19 @@ cells.forEach((cell, index) => {
 			
 		}
 		
+		changeTurn(turn);
+		
 	});
 	
 });
 
+function changeTurn(turn){
+	
+	if( turn % 2 == 0 ){
+		turn_span.textContent = "X";
+	}
+	else{
+		turn_span.textContent = "O";
+	}
+	
+}	
